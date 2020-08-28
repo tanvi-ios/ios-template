@@ -12,6 +12,6 @@ jobs:
     - name: submodules-init
       uses: snickerbockers/submodules-init@v4
     - name: Install dependencies
-    run: sh ./bootstrap.sh
+      run: sh ./bootstrap.sh
     - name: Build and test
-      run: bundle exec fastlane tests
+      run: bundle exec fastlane beta
