@@ -2,32 +2,32 @@
 //  NetworkEngine.swift
 //  Template
 //
-//  Created by Rameez Khan on 17/10/21.
+//  Created by Apple on 04/03/22.
 //
 
 import Foundation
 
-final class NetworkEngine {
-    private let urlSession: URLSession
+class NetworkEngine {
+    
+    var urlSession: URLSession!
     
     init(urlSession: URLSession) {
         self.urlSession = urlSession
     }
     
     func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T?, Error>) -> Void) {
-        var components = URLComponents()
-        components.scheme = endpoint.scheme
-        components.host = endpoint.baseURL
-        components.path = endpoint.path
-        components.queryItems = endpoint.params
-        components.port = endpoint.port
-        guard let url = components.url else { return }
+        var urlComponents = URLComponents()
+        urlComponents.host = endpoint.baseURL
+        urlComponents.path = endpoint.path
+        urlComponents.scheme = endpoint.scheme
+        urlComponents.queryItems = endpoint.params
+        urlComponents.port = endpoint.port
+        
+        guard let url = urlComponents.url else { return } //should call completion handler
         
         var urlRequest = URLRequest(url: url)
-        
         urlRequest.httpMethod = endpoint.method
-//        let urlString = "http://localhost:9999/itunes.apple.com/search?term=J&media=music"
-//        let myReq = URLRequest(url: URL(string: urlString)!)
+        
         let dataTask = urlSession.dataTask(with: urlRequest) { (data, response, error) in
             
             guard error == nil else {
@@ -39,9 +39,11 @@ final class NetworkEngine {
             
             DispatchQueue.main.async {
                 do {
-                    let responseObject = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(responseObject))
+                    let resultModel = try JSONDecoder().decode(T.self, from: data)
+                    completion(.success(resultModel))
+                
                 } catch let error {
+                    
                     completion(.failure(error))
                 }
             }
