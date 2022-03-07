@@ -10,6 +10,7 @@ import AVKit
 
 class DetailVC: UIViewController {
 
+    let song: SongModel
     var playerVC = AVPlayerViewController()
     
     var playerView: UIView = {
@@ -21,6 +22,8 @@ class DetailVC: UIViewController {
     
     var lblSongName: UILabel = {
         let songName = UILabel()
+        songName.numberOfLines = 0
+        songName.textColor = .black
         songName.font = UIFont.systemFont(ofSize: 18)
         songName.translatesAutoresizingMaskIntoConstraints = false
         
@@ -29,6 +32,8 @@ class DetailVC: UIViewController {
     
     var lblArtistName: UILabel = {
         let artistName = UILabel()
+        songName.numberOfLines = 0
+        artistName.textColor = .black
         artistName.font = UIFont.systemFont(ofSize: 18)
         artistName.translatesAutoresizingMaskIntoConstraints = false
         
@@ -37,11 +42,22 @@ class DetailVC: UIViewController {
     
     var lblAlbumName: UILabel = {
         let albumName = UILabel()
+        songName.numberOfLines = 0
+        albumName.textColor = .black
         albumName.font = UIFont.systemFont(ofSize: 18)
         albumName.translatesAutoresizingMaskIntoConstraints = false
         
         return albumName
     }()
+    
+    init(with result: SongModel) {
+        song = result
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,19 +96,16 @@ class DetailVC: UIViewController {
             
         ])
         
-        lblSongName.text = "Song: Perfect"
-        lblArtistName.text = "Artist: Ed Sheeran"
-        lblAlbumName.text = "Album: Divide"
+        lblSongName.text = "Song: \(song.trackName ?? "-")"
+        lblArtistName.text = "Artist: \(song.artistName ?? "-")"
+        lblAlbumName.text = "Album: \(song.collectionName ?? "-")"
         
+        guard let url = song.previewURL else {return}
         
-        
-        let videoURL = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
-        playerVC.player = AVPlayer(url: videoURL!)
+        guard let videoURL = URL(string: url) else {return}
+        playerVC.player = AVPlayer(url: videoURL)
         playerVC.view.frame = playerView.frame
         playerView.addSubview(playerVC.view)
-        
-        
-        
         
     }
     

@@ -49,7 +49,7 @@ class NoResultTableCell: UITableViewCell {
         ])
     }
     
-    func configureCell(text: String) {
+    func configureCell(_ text: String) {
         noResultLable.text = text
     }
 

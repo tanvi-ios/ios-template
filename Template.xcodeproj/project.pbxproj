@@ -20,6 +20,12 @@
 		183ED4DB27D0DEE100A26716 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183ED4DA27D0DEE000A26716 /* AppCoordinator.swift */; };
 		183ED4DE27D0E3F300A26716 /* ResultTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183ED4DD27D0E3F300A26716 /* ResultTableCell.swift */; };
 		183ED4E327D0F2E200A26716 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183ED4E227D0F2E200A26716 /* DetailVC.swift */; };
+		1849E6DF27D2314E009C87D3 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849E6DE27D2314E009C87D3 /* HomeVM.swift */; };
+		1849E6E227D2390D009C87D3 /* ItunesResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849E6E127D2390D009C87D3 /* ItunesResultModel.swift */; };
+		1849E6E527D24B4D009C87D3 /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849E6E427D24B4D009C87D3 /* NetworkEngine.swift */; };
+		18C468E827D5B18300235512 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468E727D5B18300235512 /* Endpoint.swift */; };
+		18C468EA27D5B44600235512 /* ItunesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468E927D5B44600235512 /* ItunesEndpoint.swift */; };
+		18C468EC27D5C07300235512 /* ItunesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468EB27D5C07300235512 /* ItunesAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +63,12 @@
 		183ED4DA27D0DEE000A26716 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		183ED4DD27D0E3F300A26716 /* ResultTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableCell.swift; sourceTree = "<group>"; };
 		183ED4E227D0F2E200A26716 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		1849E6DE27D2314E009C87D3 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		1849E6E127D2390D009C87D3 /* ItunesResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesResultModel.swift; sourceTree = "<group>"; };
+		1849E6E427D24B4D009C87D3 /* NetworkEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
+		18C468E727D5B18300235512 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		18C468E927D5B44600235512 /* ItunesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesEndpoint.swift; sourceTree = "<group>"; };
+		18C468EB27D5C07300235512 /* ItunesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +119,12 @@
 		183ED4A027D0AB8E00A26716 /* Template */ = {
 			isa = PBXGroup;
 			children = (
-				183ED4D727D0DC0000A26716 /* Coordinators */,
 				183ED4A127D0AB8E00A26716 /* AppDelegate.swift */,
 				183ED4A327D0AB8E00A26716 /* SceneDelegate.swift */,
+				183ED4D727D0DC0000A26716 /* Coordinators */,
 				183ED4D127D0ABE900A26716 /* Screens */,
+				1849E6E027D237F2009C87D3 /* Models */,
+				1849E6E327D24B2F009C87D3 /* Networking */,
 				183ED4AA27D0AB9000A26716 /* Assets.xcassets */,
 				183ED4AC27D0AB9000A26716 /* LaunchScreen.storyboard */,
 				183ED4AF27D0AB9000A26716 /* Info.plist */,
@@ -138,8 +152,8 @@
 		183ED4D127D0ABE900A26716 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				183ED4E027D0F27F00A26716 /* Detail */,
 				183ED4DF27D0F27300A26716 /* Home */,
+				183ED4E027D0F27F00A26716 /* Detail */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -167,6 +181,8 @@
 			children = (
 				183ED4D427D0BD9E00A26716 /* TableViewCells */,
 				183ED4D227D0BBB300A26716 /* HomeVC.swift */,
+				1849E6DE27D2314E009C87D3 /* HomeVM.swift */,
+				18C468EB27D5C07300235512 /* ItunesAPIService.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -177,6 +193,24 @@
 				183ED4E227D0F2E200A26716 /* DetailVC.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		1849E6E027D237F2009C87D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1849E6E127D2390D009C87D3 /* ItunesResultModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1849E6E327D24B2F009C87D3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1849E6E427D24B4D009C87D3 /* NetworkEngine.swift */,
+				18C468E727D5B18300235512 /* Endpoint.swift */,
+				18C468E927D5B44600235512 /* ItunesEndpoint.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,13 +343,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1849E6E527D24B4D009C87D3 /* NetworkEngine.swift in Sources */,
 				183ED4DB27D0DEE100A26716 /* AppCoordinator.swift in Sources */,
 				183ED4DE27D0E3F300A26716 /* ResultTableCell.swift in Sources */,
 				183ED4D327D0BBB300A26716 /* HomeVC.swift in Sources */,
+				1849E6DF27D2314E009C87D3 /* HomeVM.swift in Sources */,
+				1849E6E227D2390D009C87D3 /* ItunesResultModel.swift in Sources */,
+				18C468EC27D5C07300235512 /* ItunesAPIService.swift in Sources */,
 				183ED4A227D0AB8E00A26716 /* AppDelegate.swift in Sources */,
 				183ED4D927D0DC1800A26716 /* Coordinator.swift in Sources */,
 				183ED4E327D0F2E200A26716 /* DetailVC.swift in Sources */,
 				183ED4D627D0BDBD00A26716 /* NoResultTableCell.swift in Sources */,
+				18C468E827D5B18300235512 /* Endpoint.swift in Sources */,
+				18C468EA27D5B44600235512 /* ItunesEndpoint.swift in Sources */,
 				183ED4A427D0AB8E00A26716 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,18 +20,20 @@ class AppCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     
     func start() {
         navigationController.delegate = self
-        let rootViewController = HomeVC()
+        let itunesApiService = ItunesApiService()
+        let homeVM = HomeVM(with: itunesApiService)
+        let rootViewController = HomeVC(with: homeVM)
         
-        rootViewController.showDetail = { [weak self] in
-            self?.showDetail()
+        rootViewController.showDetail = { [weak self] result in
+            self?.showDetail(with: result)
         }
         
         navigationController.navigationBar.barStyle = .black
         navigationController.pushViewController(rootViewController, animated: false)
     }
     
-    func showDetail() {
-        let detailVC = DetailVC()
+    func showDetail(with result: SongModel) {
+        let detailVC = DetailVC(with: result)
         navigationController.pushViewController(detailVC, animated: true)
     }
     

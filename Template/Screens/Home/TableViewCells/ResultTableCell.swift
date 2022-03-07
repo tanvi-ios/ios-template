@@ -73,10 +73,10 @@ class ResultTableCell: UITableViewCell {
         ])
     }
     
-    func configureCell(index: Int) {
+    func configureCell(_ result: SongModel) {
         DispatchQueue.global(qos: .default).async { [weak self] in
             do {
-                guard let image = UIImage(data: try Data(contentsOf: URL(string: "https://www.rollingstone.com/wp-content/uploads/2019/12/TaylorSwiftTimIngham.jpg")!)) else { return }
+                guard let image = UIImage(data: try Data(contentsOf: URL(string: result.artworkUrl30 ?? "")!)) else { return }
                 
                 DispatchQueue.main.async {
                     self?.albumIV.image = image
@@ -88,8 +88,8 @@ class ResultTableCell: UITableViewCell {
             }
         }
         
-        lblTitle.text = "Title \(index)"
-        lblSubTitle.text = "SubTitle \(index)"
+        lblTitle.text = result.trackName
+        lblSubTitle.text = result.artistName
     }
     
 }
