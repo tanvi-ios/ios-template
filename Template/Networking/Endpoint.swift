@@ -2,25 +2,18 @@
 //  Endpoint.swift
 //  Template
 //
-//  Created by Rameez Khan on 17/10/21.
+//  Created by Apple on 04/03/22.
 //
 
 import Foundation
 
 protocol Endpoint {
-    // HTTP or HTTPS
-    var scheme: String { get }
     
-    // Example itunes.apple.com
-    var baseURL: String { get }
-    
-    // /search/
-    var path: String { get }
-    
-    // search?term=taylor+swift
-    var params: [URLQueryItem] { get }
-    
+    var scheme: String {get}
+    var path: String {get}
+    var baseURL: String {get}
+    var params: [URLQueryItem] {get}
     var method: String { get }
-    
     var port: Int? { get }
+    
 }
