@@ -23,9 +23,16 @@
 		1849E6DF27D2314E009C87D3 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849E6DE27D2314E009C87D3 /* HomeVM.swift */; };
 		1849E6E227D2390D009C87D3 /* ItunesResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849E6E127D2390D009C87D3 /* ItunesResultModel.swift */; };
 		1849E6E527D24B4D009C87D3 /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849E6E427D24B4D009C87D3 /* NetworkEngine.swift */; };
+		18961E3C27D72BC100B9D3F9 /* NetworkEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18961E3B27D72BC100B9D3F9 /* NetworkEngineTests.swift */; };
+		18961E3E27D7410D00B9D3F9 /* HomeVCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18961E3D27D7410D00B9D3F9 /* HomeVCUITests.swift */; };
+		18961E4027D7486700B9D3F9 /* DetailVCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18961E3F27D7486700B9D3F9 /* DetailVCUITests.swift */; };
 		18C468E827D5B18300235512 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468E727D5B18300235512 /* Endpoint.swift */; };
 		18C468EA27D5B44600235512 /* ItunesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468E927D5B44600235512 /* ItunesEndpoint.swift */; };
 		18C468EC27D5C07300235512 /* ItunesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468EB27D5C07300235512 /* ItunesAPIService.swift */; };
+		18C468F027D5FF6C00235512 /* MockItunesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468EF27D5FF6C00235512 /* MockItunesAPIService.swift */; };
+		18C468F227D6065C00235512 /* ItunesAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468F127D6065C00235512 /* ItunesAPIServiceTests.swift */; };
+		18C468F527D6283A00235512 /* HomeVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468F427D6283A00235512 /* HomeVMTests.swift */; };
+		18C468F727D6432F00235512 /* ItunesEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C468F627D6432F00235512 /* ItunesEndPointTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +73,16 @@
 		1849E6DE27D2314E009C87D3 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		1849E6E127D2390D009C87D3 /* ItunesResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesResultModel.swift; sourceTree = "<group>"; };
 		1849E6E427D24B4D009C87D3 /* NetworkEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
+		18961E3B27D72BC100B9D3F9 /* NetworkEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEngineTests.swift; sourceTree = "<group>"; };
+		18961E3D27D7410D00B9D3F9 /* HomeVCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCUITests.swift; sourceTree = "<group>"; };
+		18961E3F27D7486700B9D3F9 /* DetailVCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVCUITests.swift; sourceTree = "<group>"; };
 		18C468E727D5B18300235512 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		18C468E927D5B44600235512 /* ItunesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesEndpoint.swift; sourceTree = "<group>"; };
 		18C468EB27D5C07300235512 /* ItunesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPIService.swift; sourceTree = "<group>"; };
+		18C468EF27D5FF6C00235512 /* MockItunesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockItunesAPIService.swift; sourceTree = "<group>"; };
+		18C468F127D6065C00235512 /* ItunesAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPIServiceTests.swift; sourceTree = "<group>"; };
+		18C468F427D6283A00235512 /* HomeVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVMTests.swift; sourceTree = "<group>"; };
+		18C468F627D6432F00235512 /* ItunesEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesEndPointTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				183ED4B827D0AB9100A26716 /* TemplateTests.swift */,
+				18C468F127D6065C00235512 /* ItunesAPIServiceTests.swift */,
+				18C468F427D6283A00235512 /* HomeVMTests.swift */,
+				18C468F627D6432F00235512 /* ItunesEndPointTests.swift */,
+				18961E3B27D72BC100B9D3F9 /* NetworkEngineTests.swift */,
 			);
 			path = TemplateTests;
 			sourceTree = "<group>";
@@ -145,6 +163,8 @@
 			children = (
 				183ED4C227D0AB9100A26716 /* TemplateUITests.swift */,
 				183ED4C427D0AB9100A26716 /* TemplateUITestsLaunchTests.swift */,
+				18961E3D27D7410D00B9D3F9 /* HomeVCUITests.swift */,
+				18961E3F27D7486700B9D3F9 /* DetailVCUITests.swift */,
 			);
 			path = TemplateUITests;
 			sourceTree = "<group>";
@@ -183,6 +203,7 @@
 				183ED4D227D0BBB300A26716 /* HomeVC.swift */,
 				1849E6DE27D2314E009C87D3 /* HomeVM.swift */,
 				18C468EB27D5C07300235512 /* ItunesAPIService.swift */,
+				18C468EF27D5FF6C00235512 /* MockItunesAPIService.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -356,6 +377,7 @@
 				183ED4D627D0BDBD00A26716 /* NoResultTableCell.swift in Sources */,
 				18C468E827D5B18300235512 /* Endpoint.swift in Sources */,
 				18C468EA27D5B44600235512 /* ItunesEndpoint.swift in Sources */,
+				18C468F027D5FF6C00235512 /* MockItunesAPIService.swift in Sources */,
 				183ED4A427D0AB8E00A26716 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,7 +386,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C468F727D6432F00235512 /* ItunesEndPointTests.swift in Sources */,
+				18C468F227D6065C00235512 /* ItunesAPIServiceTests.swift in Sources */,
+				18961E3C27D72BC100B9D3F9 /* NetworkEngineTests.swift in Sources */,
 				183ED4B927D0AB9100A26716 /* TemplateTests.swift in Sources */,
+				18C468F527D6283A00235512 /* HomeVMTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +399,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				183ED4C527D0AB9100A26716 /* TemplateUITestsLaunchTests.swift in Sources */,
+				18961E4027D7486700B9D3F9 /* DetailVCUITests.swift in Sources */,
 				183ED4C327D0AB9100A26716 /* TemplateUITests.swift in Sources */,
+				18961E3E27D7410D00B9D3F9 /* HomeVCUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

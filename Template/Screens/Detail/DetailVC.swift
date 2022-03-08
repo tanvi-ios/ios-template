@@ -17,6 +17,7 @@ class DetailVC: UIViewController {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .blue
+        view.accessibilityIdentifier = "playView"
         return view
     }()
     
@@ -32,7 +33,7 @@ class DetailVC: UIViewController {
     
     var lblArtistName: UILabel = {
         let artistName = UILabel()
-        songName.numberOfLines = 0
+        artistName.numberOfLines = 0
         artistName.textColor = .black
         artistName.font = UIFont.systemFont(ofSize: 18)
         artistName.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +43,7 @@ class DetailVC: UIViewController {
     
     var lblAlbumName: UILabel = {
         let albumName = UILabel()
-        songName.numberOfLines = 0
+        albumName.numberOfLines = 0
         albumName.textColor = .black
         albumName.font = UIFont.systemFont(ofSize: 18)
         albumName.translatesAutoresizingMaskIntoConstraints = false
@@ -104,6 +105,8 @@ class DetailVC: UIViewController {
         
         guard let videoURL = URL(string: url) else {return}
         playerVC.player = AVPlayer(url: videoURL)
+        playerVC.accessibilityLabel = "playerVC"
+        playerVC.view.accessibilityIdentifier = "videoPlayer"
         playerVC.view.frame = playerView.frame
         playerView.addSubview(playerVC.view)
         

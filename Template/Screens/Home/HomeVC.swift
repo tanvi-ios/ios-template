@@ -137,6 +137,7 @@ extension HomeVC: UITableViewDataSource {
         }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ResultTableCell.description())
                 as? ResultTableCell else { return UITableViewCell() }
+        cell.accessibilityIdentifier = "result_cell_\(indexPath.row)"
         cell.configureCell(homeVM.itunesResults[indexPath.row])
         return cell
     }
