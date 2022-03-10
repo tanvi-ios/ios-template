@@ -8,8 +8,7 @@
 import UIKit
 
 class NoResultTableCell: UITableViewCell {
-
-    private let noResultLable : UILabel = {
+    private let noResultLabel: UILabel = {
         let lable = UILabel()
         lable.font = UIFont.systemFont(ofSize: 24)
         lable.numberOfLines = 0
@@ -17,40 +16,29 @@ class NoResultTableCell: UITableViewCell {
         lable.translatesAutoresizingMaskIntoConstraints = false
         return lable
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func setupViews() {
-        self.addSubview(noResultLable)
-        
+        addSubview(noResultLabel)
+
         NSLayoutConstraint.activate([
-            noResultLable.topAnchor.constraint(equalTo: self.topAnchor),
-            noResultLable.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            noResultLable.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            noResultLable.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            noResultLabel.topAnchor.constraint(equalTo: topAnchor),
+            noResultLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            noResultLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            noResultLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
-    
-    func configureCell(text: String) {
-        noResultLable.text = text
-    }
 
+    func configureCell(text: String) {
+        noResultLabel.text = text
+    }
 }
