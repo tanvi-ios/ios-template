@@ -6,18 +6,18 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol ItunesApiServiceProtocol {
-    func getSongs(for text: String, completion: @escaping (Result<ItunesResultModel?, Error>) -> Void)
+    func getSongs(for text: String) -> Observable<ItunesResultModel>
 }
 
 struct ItunesApiService: ItunesApiServiceProtocol {
-    func getSongs(for text: String, completion: @escaping (Result<ItunesResultModel?, Error>) -> Void) {
+    func getSongs(for text: String) -> Observable<ItunesResultModel> {
         
         let networkEngine = NetworkEngine(urlSession: URLSession.init(configuration: .default))
         let itunesEndpoint = ItunesEndpoint.getSongs(searchTerm: text)
-        networkEngine.request(endpoint: itunesEndpoint) { (itunesResult: Result<ItunesResultModel?, Error>) in
-           completion(itunesResult)
-        }
+        return networkEngine.request(endpoint: itunesEndpoint)
+        
     }
 }

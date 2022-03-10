@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class HomeVM {
-    var itunesResults = [SongModel]()
+    var itunesResults = PublishSubject<[SongModel]>()   
     let itunesAPIService: ItunesApiServiceProtocol
     var searchedText = ""
     var reloadData: (() -> Void)?
@@ -19,26 +20,28 @@ class HomeVM {
         self.itunesAPIService = itunesAPIService
     }
     
-    func getSearchResult(_ searchText: String) {
-        itunesAPIService.getSongs(for: searchText) { [weak self] (itunesResult) in
-            switch(itunesResult) {
-            case .failure(let error):
-                print("error is \(error)")
-                if let pass = self?.passError {
-                    pass(error)
-                }
-            case .success(let searchResult):
-                print("result is \(String(describing: searchResult?.resultCount))")
-                if let results = searchResult?.results, !results.isEmpty {
-                    self?.itunesResults = results
-                } else {
-                    self?.itunesResults = []
-                }
-                if let reload = self?.reloadData {
-                    reload()
-                }
-            }
-        }
+    func getSearchResult(_ searchText: String) -> Observable<ItunesResultModel> {
+
+        return itunesAPIService.getSongs(for: searchText)
+//        itunesAPIService.getSongs(for: searchText) { [weak self] (itunesResult) in
+//            switch(itunesResult) {
+//            case .failure(let error):
+//                print("error is \(error)")
+//                if let pass = self?.passError {
+//                    pass(error)
+//                }
+//            case .success(let searchResult):
+//                print("result is \(String(describing: searchResult?.resultCount))")
+//                if let results = searchResult?.results, !results.isEmpty {
+//                    self?.itunesResults = results
+//                } else {
+//                    self?.itunesResults = []
+//                }
+//                if let reload = self?.reloadData {
+//                    reload()
+//                }
+//            }
+//        }
     }
     
 }

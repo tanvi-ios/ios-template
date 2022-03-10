@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class HomeVC: UIViewController {
     var showDetail: ((SongModel) -> Void)?
@@ -17,7 +19,7 @@ class HomeVC: UIViewController {
         searchController.searchBar.searchTextField.isAccessibilityElement = true
         searchController.searchBar.searchTextField.accessibilityIdentifier = "songsSearchBar"
         searchController.searchBar.placeholder = "Search Songs"
-        searchController.searchResultsUpdater = self
+        //searchController.searchResultsUpdater = self
         
         return searchController
     }()
@@ -97,8 +99,9 @@ extension HomeVC {
             errorLable.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         
-        songsTableView.delegate = self
-        songsTableView.dataSource = self
+//        songsTableView.delegate = self
+//        songsTableView.dataSource = self
+        
     }
     
     func setupNavigationBar() {
@@ -107,56 +110,63 @@ extension HomeVC {
         navigationItem.title = "Search"
         
     }
-}
-
-
-extension HomeVC: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        print("Search \(String(describing: songsSearchController.searchBar.text))")
-        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
-            homeVM.getSearchResult(searchText)
-        } else {
-            homeVM.itunesResults = []
-            songsTableView.reloadData()
-        }
-    }
-}
-
-extension HomeVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return homeVM.itunesResults.isEmpty ? 1 : homeVM.itunesResults.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if homeVM.itunesResults.isEmpty {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: NoResultTableCell.description())
-                    as? NoResultTableCell else { return UITableViewCell() }
-            let text = homeVM.searchedText.isEmpty ? "You have not searched for anything!" : "No result found!"
-            cell.configureCell(text)
-            return cell
-        }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ResultTableCell.description())
-                as? ResultTableCell else { return UITableViewCell() }
-        cell.accessibilityIdentifier = "result_cell_\(indexPath.row)"
-        cell.configureCell(homeVM.itunesResults[indexPath.row])
-        return cell
+    func bindViews() {
+        homeVM.itunesResults.asObservable().bind(to: songsTableView.rx.items(cellIdentifier: ResultTableCell.description(), cellType: ResultTableCell.self)) { (row, song, cell) in
+            cell.lblTitle.text = song.trackName
+            cell.lblSubTitle.text = song.artistName
+        }.disposed(by: DisposeBag())
     }
 }
 
-extension HomeVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if homeVM.itunesResults.isEmpty {
-            return tableView.frame.size.height
-        }
-        return UITableView.automaticDimension
-        
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if let showDetail = showDetail, !homeVM.itunesResults.isEmpty {
-            let result = homeVM.itunesResults[indexPath.row]
-            showDetail(result)
-        }
-    }
-}
+
+//extension HomeVC: UISearchResultsUpdating {
+//    func updateSearchResults(for searchController: UISearchController) {
+//        print("Search \(String(describing: songsSearchController.searchBar.text))")
+//        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+//            homeVM.getSearchResult(searchText)
+//        } else {
+//            homeVM.itunesResults = []
+//            songsTableView.reloadData()
+//        }
+//    }
+//}
+//
+//extension HomeVC: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return homeVM.itunesResults.isEmpty ? 1 : homeVM.itunesResults.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if homeVM.itunesResults.isEmpty {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: NoResultTableCell.description())
+//                    as? NoResultTableCell else { return UITableViewCell() }
+//            let text = homeVM.searchedText.isEmpty ? "You have not searched for anything!" : "No result found!"
+//            cell.configureCell(text)
+//            return cell
+//        }
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: ResultTableCell.description())
+//                as? ResultTableCell else { return UITableViewCell() }
+//        cell.accessibilityIdentifier = "result_cell_\(indexPath.row)"
+//        cell.configureCell(homeVM.itunesResults[indexPath.row])
+//        return cell
+//    }
+//}
+//
+//extension HomeVC: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if homeVM.itunesResults.isEmpty {
+//            return tableView.frame.size.height
+//        }
+//        return UITableView.automaticDimension
+//
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        if let showDetail = showDetail, !homeVM.itunesResults.isEmpty {
+//            let result = homeVM.itunesResults[indexPath.row]
+//            showDetail(result)
+//        }
+//    }
+//}

@@ -9,6 +9,7 @@ import Foundation
 
 enum APIServiceError : Error {
     case searchTextEmpty
+    case somethingWrong
 }
 
 extension APIServiceError: LocalizedError {
@@ -17,6 +18,11 @@ extension APIServiceError: LocalizedError {
         case .searchTextEmpty:
             return NSLocalizedString(
                 "Search text can not be empty",
+                comment: ""
+            )
+        case .somethingWrong:
+            return NSLocalizedString(
+                "Something went wrong",
                 comment: ""
             )
         }
